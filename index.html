@@ -16,30 +16,34 @@
 <canvas id="myCanvas" width="1366" height="768" style="border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 <script type="text/javascript">
-var d = new Date();
-var x;
+var dmili;
+var dsec;
 var rand = Math.random()+ 1 *2500
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 function clickToStart(){
 	setTimeout(function(){
-	x = d.getTime()
+	var d = new Date();
+	dsec = d.getSeconds();
+	dmili = d.getMilliseconds();
 	ctx.fillStyle = "#00ff00";
 	ctx.beginPath();
 	ctx.arc(screen.width - screen.width/2,screen.height - screen.height/2,200,0,2*Math.PI);
 	ctx.stroke();
 	ctx.fill();
-	console.log(x);}, rand);
+	console.log(d);}, rand);
 }
 function reactionTime(){
 	var a = new Date();
-	var d = a.getTime();
-	console.log(d);
-	console.log(x);
-	var mtime = Math.abs(x - d);
-	var stime = mtime / 10000
-	console.log(mtime);
-	alert("Your reaction time was " + stime + " seconds!");
+	var asec = a.getSeconds();
+	var amili = a.getMilliseconds();
+	console.log(asec);
+	console.log(dsec);
+	console.log(amili);	
+	console.log(dmili);
+	var SECONDStime = Math.abs(asec - dsec);
+	var MILLISECONDStime =Math.abs(amili - dmili);
+	alert("Your reaction time was "+ SECONDStime + "." + MILLISECONDStime + " seconds!");
 }
 </script>
 </body>
