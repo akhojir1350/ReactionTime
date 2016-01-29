@@ -1,19 +1,33 @@
 <html>
 <style>
     body{
+	width: 100%;
+	height: 100%;
         margin: 0px;	
         overflow: hidden;
     }
         canvas{
             width: 100%;
             height: 100%;
+	    margin: 0px;
         }
+        button{
+        	
+		
+        }
+	#buttons{
+	position: absolute;
+}
     
 </style>
+
+<body>
+<div id="buttons">
+<input type = "button" id = "clear" value = "Clear">
 <button onclick="zero()">Click me to start</button>
 <button onclick="reactionTime()">Click when circle appears</button>
-<body>
-<canvas id="myCanvas" width= "1366" height="768" style="border:1px solid #d3d3d3;">
+</div>
+<canvas id="myCanvas" width = "1600" height = "900" style = "border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 <script type="text/javascript">
 var dmili;
@@ -45,8 +59,10 @@ function clickToStart(){
 	ctx.arc(screen.width - screen.width/2,screen.height - screen.height/2,200,0,2*Math.PI);
 	ctx.stroke();
 	ctx.fill();
+document.getElementById('clear').addEventListener('click', function(){ctx.clearRect(0,0, c.width, c.height);},false);
 	//console.log(d);
 }
+
 function reactionTime(){
 	var a = new Date();
 	var asec = a.getSeconds();
